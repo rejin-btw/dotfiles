@@ -1,0 +1,22 @@
+# ~/.config/mako/config
+
+# General appearance
+background-color=#00000080
+text-color=#ffffff
+border-radius=10
+border-size=2
+border-color=#87CEEB
+layer=overlay
+font=Roboto
+
+
+# Notification behavior
+default-timeout=5000
+ignore-timeout=0
+
+# Layout
+width=250
+height=100
+margin=10
+padding=10
+
