@@ -1,3 +1,6 @@
 [Added Associations]
-text/x-csrc=userapp-nvim_thunar.sh-4K9SF3.desktop;Alacritty.desktop;
+text/x-csrc=userapp-nvim_thunar.sh-4K9SF3.desktop;Alacritty.desktop;userapp-nvim_thunar.sh-FC3WF3.desktop;
 text/plain=userapp-nvim_thunar.sh-4K9SF3.desktop;userapp-nvim_thunar.sh-39WAG3.desktop;
+
+[Default Applications]
+text/x-csrc=userapp-nvim_thunar.sh-FC3WF3.desktop
