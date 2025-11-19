@@ -12,6 +12,12 @@
 workspace "browser"
 workspace "chat"
 
+cursor {
+    xcursor-theme "phinger-cursors-dark-left"
+    xcursor-size 24
+}
+
+
 
 
 input {
