@@ -1,11 +1,26 @@
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 // Input device configuration.
 // Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+// bingo aljldflkdjflkjfoiuo4otj4oj
+
+
+
+workspace "browser"
+workspace "chat"
+
+cursor {
+    xcursor-theme "phinger-cursors-dark-left"
+    xcursor-size 24
+}
+
+
+
+
 input {
     keyboard {
         xkb {
@@ -15,19 +30,16 @@ input {
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
+	    options "altwin:swap_alt_win"
         }
 
         // Enable numlock on startup, omitting this setting disables it.
         numlock
+
     }
 
     // Next sections include libinput settings.
     // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
         tap
@@ -45,9 +57,11 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed 0.4
+	//scroll-factor 2.0
         // accel-profile "flat"
-        // scroll-method "no-scroll"
+       // scroll-method "no-scroll"
+	left-handed
     }
 
     trackpoint {
@@ -57,7 +71,6 @@ input {
         // accel-profile "flat"
         // scroll-method "on-button-down"
         // scroll-button 273
-        // scroll-button-lock
         // middle-emulation
     }
 
@@ -66,14 +79,14 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
@@ -108,10 +121,10 @@ input {
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Layout
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 6
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -119,7 +132,7 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "never"
+    //center-focused-column "always"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -159,7 +172,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -167,13 +180,17 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        //active-color "#7fc8ff"
+	//active-gradient from="#00BCD4" to="#FF9800" angle=60
+
+
+
+
+
 
         // Color of the ring on inactive monitors.
-        //
-        // The focus ring only draws around the active window, so the only place
-        // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        //inactive-color "#505050"
+	//inactive-gradient from="#232323" to="#505050" angle=45
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -182,7 +199,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -204,18 +221,14 @@ layout {
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
 
-        // Gradients can use a few different interpolation color spaces.
-        // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-        //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
+        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+       // on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -224,13 +237,13 @@ layout {
         // radius. It has to assume that windows have square corners, leading to
         // shadow artifacts inside the CSD rounded corners. This setting fixes
         // those artifacts.
-        //
+        // 
         // However, instead you may want to set prefer-no-csd and/or
         // geometry-corner-radius. Then, niri will know the corner radius and
         // draw the shadow correctly, without having to draw it behind the
         // window. These will also remove client-side shadows if the window
         // draws any.
-        //
+        // 
         // draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
@@ -268,16 +281,19 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+//spawn-at-startup "waybar"
+spawn-at-startup "mako"
+spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/2115.jpg" "-m" "fill"
+//spawn-at-startup "xwayland-satellite"
+spawn-at-startup "/run/current-system/sw/bin/polkit-gnome-authentication-agent-1"
 
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+//spawn-at-startup "eww" "open" "niri_scroller"
+//spawn-at-startup "eww" "open" "niri_scroller1"
+//spawn-at-startup "eww" "open" "datetime_bar"
 
-hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
-}
 
+
+prefer-no-csd
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
@@ -295,18 +311,42 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
-// https://yalter.github.io/niri/Configuration:-Animations
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
-    // off
+    workspace-switch {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.0001
+         }
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+
+ 	window-open {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.0001
+    }
+
+
+  window-close {
+        duration-ms 50
+        curve "linear"
+    }
+
+
+
+
+
+
+
+
+    window-movement {
+        duration-ms 200
+        curve "ease-out-quad"
+	}	
 }
+
+
+ 
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
@@ -342,9 +382,25 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 5
     clip-to-geometry true
 }
+
+
+window-rule {
+    open-maximized true
+
+}
+
+
+window-rule {
+    match at-startup=true app-id="firefox"
+    open-on-workspace "chat"
+}
+
+
+
+
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -366,39 +422,98 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-    // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }
+
+    Mod+Alt+X { spawn "systemctl" "poweroff"; }
+    Mod+Alt+Z { spawn "systemctl" "suspend"; }
+    Mod+Shift+Space { toggle-window-floating; }
+    //Mod+F5  { spawn "ddcutil" "setvcp" "10" "01"; }
+
+    //Mod+F6  { spawn "ddcutil" "setvcp" "10" "05"; }
+    //Mod+F7  { spawn "ddcutil" "setvcp" "10" "20"; }
+    //Mod+F8  { spawn "ddcutil" "setvcp" "10" "50"; }
+    //Mod+F9  { spawn "ddcutil" "setvcp" "10" "70"; }
+    Mod+F12 { spawn "toggle-audio";  }
+    Mod+F11 { spawn "auto-consume"; }
+    Mod+M { spawn "datetime-notify"; }
+    
+    
+    
+    //Mod+F10 { spawn "ddcutil" "setvcp" "10" "100"; }
+    //Mod+F1  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 0 && ddcutil setvcp 18 0 && ddcutil setvcp 1A 0"; }
+   // Mod+F2  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 10 && ddcutil setvcp 18 10 && ddcutil setvcp 1A 10"; }
+   // Mod+F3  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 20 && ddcutil setvcp 18 20 && ddcutil setvcp 1A 20"; }
+    //Mod+F4  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 30 && ddcutil setvcp 18 30 && ddcutil setvcp 1A 30"; }
+    Mod+Shift+c { spawn "firefox" "--private-window"; }
+    Mod+p { spawn "firefox" "--new-window" "https://www.perplexity.ai"; }
+    Mod+Z { spawn "firefox" "--new-window" "https://www.notion.so"; }
+    //Mod+F1  { spawn "sh" "-c" "~/vcp_toggle.sh 1"; }
+    //Mod+F2  { spawn "sh" "-c" "~/vcp_toggle.sh 2"; }
+    //Mod+F3  { spawn "sh" "-c" "~/vcp_toggle.sh 3"; }
+    //Mod+F4  { spawn "sh" "-c" "~/vcp_toggle.sh 4"; }
+    //Mod+F5 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 1"; }
+    //Mod+F6 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 5"; }
+    //Mod+F7 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 20"; }
+    //Mod+F8 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 50"; }
+    //Mod+F9 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 70"; }
+    //Mod+F10 { spawn "sh" "-c" "~/vcp_brightness_adjust.sh 100"; }
+
+    //Mod+F1 { spawn "sh" "-c" "~/brightness_steps.sh 1"; }
+    //Mod+F2 { spawn "sh" "-c" "~/brightness_steps.sh 2"; }
+    //Mod+F3 { spawn "sh" "-c" "~/brightness_steps.sh 3"; }
+    //Mod+F4 { spawn "sh" "-c" "~/brightness_steps.sh 4"; }
+   // Mod+F5 { spawn "sh" "-c" "~/brightness_steps.sh 5"; }
+   // Mod+F6 { spawn "sh" "-c" "~/brightness_steps.sh 6"; }
+   // Mod+F7 { spawn "sh" "-c" "~/brightness_steps.sh 7"; }
+    //Mod+F8 { spawn "sh" "-c" "~/brightness_steps.sh 8"; }
+    //Mod+F9 { spawn "sh" "-c" "~/brightness_steps.sh 9"; }
+    //Mod+F10 { spawn "sh" "-c" "~/brightness_steps.sh 10"; }
+
+    Mod+F1  { spawn "vcp-control" "1"; }
+    Mod+F2  { spawn "vcp-control" "2"; }
+    Mod+F3  { spawn "vcp-control" "3"; }
+    Mod+F4  { spawn "vcp-control" "4"; }
+    Mod+F5  { spawn "vcp-control" "5"; }
+    Mod+F6  { spawn "vcp-control" "6"; }
+    Mod+F7  { spawn "vcp-control" "7"; }
+    Mod+F8  { spawn "vcp-control" "8"; }
+    Mod+F9  { spawn "vcp-control" "9"; }
+    Mod+F10 { spawn "vcp-control" "10"; }
+
+
+   
+
+  
+    
+    //Mod+p { spawn "chromium --new-window --app=https://www.perplexity.ai"; }
+    
+
+
+    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
+    // Note: the entire command goes as a single argument in the end.
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    // Using spawn-sh allows to pass multiple arguments together with the command.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
 
-    Mod+Q repeat=false { close-window; }
+    Mod+Q { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
+    //Mod+J     { focus-window-down; }
+    //Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
@@ -406,16 +521,16 @@ binds {
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
     Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
+    //Mod+Ctrl+J     { move-window-down; }
+   // Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -495,15 +610,14 @@ binds {
     // These binds are also affected by touchpad's natural-scroll, so these
     // example binds are "inverted", since we have natural-scroll enabled for
     // touchpads by default.
-    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-    // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+    // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
 
     // You can refer to workspaces by index. However, keep in mind that
     // niri is a dynamic workspace system, so these commands are kind of
     // "best effort". Trying to refer to a workspace index bigger than
     // the current workspace count will instead refer to the bottommost
     // (empty) workspace.
-    //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
     Mod+1 { focus-workspace 1; }
@@ -543,8 +657,6 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
-    // Cycling through the presets in reverse order is also possible.
-    // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
@@ -591,7 +703,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
@@ -613,3 +725,36 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+
+
+spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/niri11.jpg" "-m" "fill"
+spawn-at-startup "niri-mouse-scroll"
+spawn-at-startup "sunsetr"
+//spawn-at-startup "~/scripts/auto_consume.sh"
+spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
+spawn-sh-at-startup "watch-firefox-bookmarks"
+//spawn-at-startup "sh" "-c" "~/scripts/vcp_full_control.sh 5"
+spawn-at-startup "/home/rejin/.local/share/appimage/AppFlowy-0.10.2-linux-x86_64.AppImage"
+spawn-at-startup "firefox" "https://www.perplexity.ai"
+//spawn-at-startup "~/scripts/ram_monitor.sh"
+
+
+
+
+environment {
+    GDK_BACKEND "wayland"
+    QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+}
+
+
+hotkey-overlay {
+	skip-at-startup
+}
+
+
+
+
+
+
