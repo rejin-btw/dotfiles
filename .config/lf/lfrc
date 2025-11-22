@@ -117,6 +117,8 @@ cmd fzf_select ${{
 
 map f fzf_select
 
+set editor alacritty -e nvim
+
 
 
 
