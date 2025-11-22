@@ -117,15 +117,22 @@ cmd fzf_select ${{
 
 map f fzf_select
 
-set editor alacritty -e nvim
+# Set default editor
+set editor nvim
 
-
-cmd open ${{ 
-  case $(file --mime-type "$f" -bL) in
-    text/*|application/json) alacritty -e nvim "$f" ;;
-    *) xdg-open "$f" ;;
-  esac
+# Override open command
+cmd open ${{
+    case $(file --mime-type -Lb "$f") in
+        text/*|application/x-shellscript|application/x-sh) 
+            alacritty -e nvim "$f"
+            ;;
+        *) 
+            xdg-open "$f" &
+            ;;
+    esac
 }}
+
+# Map 'l' to the open command
 map l open
 
 
