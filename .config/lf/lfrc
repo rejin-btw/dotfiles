@@ -120,6 +120,16 @@ map f fzf_select
 set editor alacritty -e nvim
 
 
+cmd open ${{ 
+  case $(file --mime-type "$f" -bL) in
+    text/*|application/json) alacritty -e nvim "$f" ;;
+    *) xdg-open "$f" ;;
+  esac
+}}
+map l open
+
+
+
 
 
 
