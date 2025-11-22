@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$HOME/.nix-profile/bin:$PATH
+
 step=$1
 
 # Validate input
