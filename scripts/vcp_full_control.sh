@@ -30,18 +30,15 @@ default_colors="14 0x0B 16 50 18 50 1A 50"
 # Function to apply color/contrast VCP codes
 apply_color_contrast() {
   local args=($1)
-  # args: pairs of code and value (e.g., "14 0x0B 16 0 18 0 1A 0")
   for ((i=0; i < ${#args[@]}; i+=2)); do
     ddcutil setvcp "${args[i]}" "${args[i+1]}"
   done
 }
 
 if (( step >= 1 && step <=4 )); then
-  # apply preset color/contrast + brightness
   apply_color_contrast "${preset_colors[step-1]}"
   ddcutil setvcp 10 $brightness
 elif (( step >= 5 && step <= 10 )); then
-  # apply default color/contrast + brightness
   apply_color_contrast "$default_colors"
   ddcutil setvcp 10 $brightness
 fi
