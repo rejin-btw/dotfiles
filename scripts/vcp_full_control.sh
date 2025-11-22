@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export PATH=$HOME/.nix-profile/bin:$PATH
-
 step=$1
 
 # Validate input
@@ -31,16 +29,16 @@ default_colors="14 0x0B 16 50 18 50 1A 50"
 apply_color_contrast() {
   local args=($1)
   for ((i=0; i < ${#args[@]}; i+=2)); do
-    ddcutil setvcp "${args[i]}" "${args[i+1]}"
+    $HOME/.nix-profile/bin/ddcutil setvcp "${args[i]}" "${args[i+1]}"
   done
 }
 
 if (( step >= 1 && step <=4 )); then
   apply_color_contrast "${preset_colors[step-1]}"
-  ddcutil setvcp 10 $brightness
+  $HOME/.nix-profile/bin/ddcutil setvcp 10 $brightness
 elif (( step >= 5 && step <= 10 )); then
   apply_color_contrast "$default_colors"
-  ddcutil setvcp 10 $brightness
+  $HOME/.nix-profile/bin/ddcutil setvcp 10 $brightness
 fi
 
 echo "Step $step applied: brightness=$brightness, colors set."
