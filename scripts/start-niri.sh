@@ -1,1 +1,1 @@
-niri --session --config ~/.config/niri/arch/config.kdl
+niri --session --config ~/.config/niri/kdl/config.kdl
