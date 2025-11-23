@@ -1,1 +1,2 @@
-niri --session 
+dbus-run-session niri
+

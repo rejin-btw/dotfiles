@@ -746,7 +746,7 @@ environment {
     GDK_BACKEND "wayland"
     QT_QPA_PLATFORM "wayland"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
-    PATH "/run/wrappers/bin:/home/rejin/.nix-profile/bin:/run/current-system/sw/bin:/home/rejin/.local/bin"
+    
 
 }
 
