@@ -746,6 +746,7 @@ environment {
     GDK_BACKEND "wayland"
     QT_QPA_PLATFORM "wayland"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    PATH "/run/current-system/sw/bin:/home/rejin/.nix-profile/bin:/home/rejin/.local/bin"
 }
 
 
@@ -753,11 +754,6 @@ hotkey-overlay {
 	skip-at-startup
 }
 
-
-
-environment {
-    PATH "/run/current-system/sw/bin:/home/rejin/.nix-profile/bin:/home/rejin/.local/bin"
-}
 
 
 
