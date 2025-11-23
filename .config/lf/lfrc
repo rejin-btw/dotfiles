@@ -2,19 +2,9 @@
 set shell sh
 
 # set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
 set shellopts '-eu'
 
 # set internal field separator (IFS) to "\n" for shell commands
-# This is useful to automatically split file names in $fs and $fx properly
-# since default file separator used in these variables (i.e. 'filesep' option)
-# is newline. You need to consider the values of these options and create your
-# commands accordingly.
 set ifs "\n"
 
 # leave some space at the top and the bottom of the screen
@@ -37,46 +27,13 @@ map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
-    esac
-}}
-
-# mkdir command. See wiki if you want it to select created dir
+# mkdir command
 map a :push %mkdir<space>
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
-
-# make sure trash folder exists
-# %mkdir -p ~/.trash
-
 # move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
 cmd trash %set -f; mv -t ~/.trash $fx
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ "$ans" = "y" ] && rm -rf $fx
-# }}
-
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
-
 # extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
     set -f
     case $f in
@@ -107,9 +64,6 @@ cmd zip ${{
     rm -rf $1
 }}
 
-
-
-
 cmd fzf_select ${{
     res="$(fd . | fzf)"
     [ -n "$res" ] && lf -remote "send select '$res'"
@@ -120,25 +74,29 @@ map f fzf_select
 # Set default editor
 set editor nvim
 
-# Override open command
+# --- UPDATED OPEN COMMAND ---
 cmd open ${{
-    case $(file --mime-type -Lb "$f") in
-        text/*|application/x-shellscript|application/x-sh) 
-            alacritty -e nvim "$f"
+    case "$f" in
+        # 1. Explicitly open shell scripts and config files in nvim
+        #    Added: .conf, .config, .cfg, .ini, .yml, .yaml, .toml, .lua, .json
+        *.sh|*.conf|*.config|*.cfg|*.ini|*.yml|*.yaml|*.toml|*.lua|*.json|*rc) 
+            nvim "$fx" 
             ;;
         *) 
-            xdg-open "$f" &
+            # 2. Fallback: Check MIME type for other text files (e.g. Makefiles, unknown source code)
+            case $(file --mime-type -Lb "$f") in
+                text/*|application/json|application/x-shellscript) 
+                    nvim "$fx" 
+                    ;;
+                *) 
+                    # 3. Everything else (Images, PDFs) goes to system default
+                    setsid -f xdg-open "$fx" >/dev/null 2>&1 
+                    ;;
+            esac
             ;;
     esac
 }}
 
 # Map 'l' to the open command
 map l open
-
-
-
-
-
-
-
 
