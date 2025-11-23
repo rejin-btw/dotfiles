@@ -754,6 +754,14 @@ hotkey-overlay {
 }
 
 
+programs.niri = {
+  enable = true;
+  settings = {
+    environment = {
+      PATH = "/run/current-system/sw/bin:/home/rejin/.nix-profile/bin:/home/rejin/.local/bin";
+    };
+  };
+};
 
 
 
