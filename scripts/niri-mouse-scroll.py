@@ -4,7 +4,7 @@ import subprocess
 
 # --- CONFIGURATION ---
 DEV_PATH = '/dev/input/by-id/usb-SIGMACHIP_Usb_Mouse-event-mouse'
-NIRI_EXECUTABLE = '/usr/bin/niri'
+NIRI_EXECUTABLE = 'niri'
 # --- END CONFIGURATION ---
 
 try:

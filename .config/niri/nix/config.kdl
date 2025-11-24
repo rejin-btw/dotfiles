@@ -283,9 +283,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 //spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/2115.jpg" "-m" "fill"
+//spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/2115.jpg" "-m" "fill"
 //spawn-at-startup "xwayland-satellite"
-spawn-at-startup "/run/current-system/sw/bin/polkit-gnome-authentication-agent-1"
 
 //spawn-at-startup "eww" "open" "niri_scroller"
 //spawn-at-startup "eww" "open" "niri_scroller1"
@@ -374,7 +373,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
-
+i
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
@@ -394,7 +393,7 @@ window-rule {
 
 
 window-rule {
-    match at-startup=true app-id="firefox"
+    match at-startup=true app-id="ulaa-kpmdbogdmbfckbgdfdffkleoleokbhod-Default"
     open-on-workspace "chat"
 }
 
@@ -410,7 +409,7 @@ binds {
     // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
     // when running as a winit window.
     //
-    // Most actions that you can bind here can also be invoked programmatically with
+    // Most actions that you cani bind here can also be invoked programmatically with
     // `niri msg action do-something`.
 
     // Mod-Shift-/, which is usually the same as Mod-?,
@@ -444,9 +443,9 @@ binds {
    // Mod+F2  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 10 && ddcutil setvcp 18 10 && ddcutil setvcp 1A 10"; }
    // Mod+F3  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 20 && ddcutil setvcp 18 20 && ddcutil setvcp 1A 20"; }
     //Mod+F4  { spawn "sh" "-c" "ddcutil setvcp 14 0x0B && ddcutil setvcp 16 30 && ddcutil setvcp 18 30 && ddcutil setvcp 1A 30"; }
-    Mod+Shift+c { spawn "firefox" "--private-window"; }
-    Mod+p { spawn "firefox" "--new-window" "https://www.perplexity.ai"; }
-    Mod+Z { spawn "firefox" "--new-window" "https://www.notion.so"; }
+    Mod+Shift+c { spawn "com.ulaa.Ulaa" "--incognito"; }
+    Mod+p { spawn "com.ulaa.Ulaa" "--app=https://www.perplexity.ai"; }
+    Mod+Z { spawn "com.ulaa.Ulaa" "--app=https://www.notion.so"; }   
     //Mod+F1  { spawn "sh" "-c" "~/vcp_toggle.sh 1"; }
     //Mod+F2  { spawn "sh" "-c" "~/vcp_toggle.sh 2"; }
     //Mod+F3  { spawn "sh" "-c" "~/vcp_toggle.sh 3"; }
@@ -728,15 +727,15 @@ binds {
 
 
 
-spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/niri11.jpg" "-m" "fill"
+//spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/niri11.jpg" "-m" "fill"
 spawn-at-startup "niri-mouse-scroll"
-spawn-at-startup "sunsetr"
-//spawn-at-startup "~/scripts/auto_consume.sh"
+//spawn-at-startup "sunsetr"
+spawn-at-startup "auto-consume"
 spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
-spawn-sh-at-startup "watch-firefox-bookmarks"
+//spawn-sh-at-startup "watch-firefox-bookmarks"
 //spawn-at-startup "sh" "-c" "~/scripts/vcp_full_control.sh 5"
-spawn-at-startup "/home/rejin/.local/share/appimage/AppFlowy-0.10.2-linux-x86_64.AppImage"
-spawn-at-startup "firefox" "https://www.perplexity.ai"
+//spawn-at-startup "appflowy"
+//spawn-at-startup "com.ulaa.Ulaa" "--app=https://www.perplexity.ai"
 //spawn-at-startup "~/scripts/ram_monitor.sh"
 
 

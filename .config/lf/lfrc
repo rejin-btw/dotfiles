@@ -100,3 +100,6 @@ cmd open ${{
 # Map 'l' to the open command
 map l open
 
+map D delete
+map <delete> delete
+

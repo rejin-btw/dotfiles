@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script to display current date and time as notification
 
 # Get current date and time
