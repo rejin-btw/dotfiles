@@ -1,54 +1,24 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 PIDFILE="/tmp/niri-auto-consume.pid"
+# Point to the compiled binary we just built
+BINARY="$HOME/dotfiles/scripts/niri_auto/target/release/niri_auto"
 
-# Check if already running and kill by command pattern
 if [ -f "$PIDFILE" ]; then
-    # Kill any running niri msg event-stream processes
-    pkill -f "niri msg --json event-stream"
+    pkill -f "$BINARY"
     rm "$PIDFILE"
-    notify-send "Niri Auto-Consume" "Disabled - windows will open normally"
+    notify-send "Auto-Consume" "Disabled"
     exit 0
 fi
 
-# Start auto-consume mode
 echo $$ > "$PIDFILE"
-notify-send "Niri Auto-Consume" "Enabled - new windows will join current tab group"
+notify-send "Auto-Consume" "Enabled (Rust)"
 
-# Array to track processed window IDs
-declare -A processed_windows
+# Make sure it's executable (just in case)
+chmod +x "$BINARY"
 
-# Listen to event stream and auto-consume new windows
-niri msg --json event-stream | while read -r line; do
-    # Check if a window was opened or changed
-    if echo "$line" | jq -e '.WindowOpenedOrChanged' > /dev/null 2>&1; then
-        # Extract the window ID
-        window_id=$(echo "$line" | jq -r '.WindowOpenedOrChanged.window.id // empty')
-        
-        # Skip if we've already processed this window
-        if [ -n "$window_id" ] && [ -z "${processed_windows[$window_id]}" ]; then
-            # Mark this window as processed
-            processed_windows[$window_id]=1
-            
-            # Small delay to ensure window is ready
-            sleep 0.1
-            
-            # Focus the column to the left (your tabbed column)
-            niri msg action focus-column-left
-            
-            # Consume the window from the right into the focused column
-            niri msg action consume-window-into-column
-            
-            # Ensure column is in tabbed display mode
-            niri msg action set-column-display tabbed
-            
-            # Focus the newly added window
-            niri msg action focus-window-bottom
-        fi
-    fi
-done &
+# Run the binary in the background
+"$BINARY" &
 
-# Cleanup on exit
-trap "pkill -f 'niri msg --json event-stream'; rm -f '$PIDFILE'" EXIT
+trap "pkill -f '$BINARY'; rm -f '$PIDFILE'" EXIT
 wait
-

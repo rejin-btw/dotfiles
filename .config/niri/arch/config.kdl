@@ -125,6 +125,7 @@ input {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 6
+    default-column-display "tabbed" 
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -357,6 +358,8 @@ window-rule {
     default-column-width {}
 }
 
+
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -364,6 +367,11 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match is-focused=false
+    column "current"
 }
 
 // Example: block out two password managers from screen capture.

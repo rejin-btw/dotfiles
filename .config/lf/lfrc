@@ -79,7 +79,7 @@ cmd open ${{
     case "$f" in
         # 1. Explicitly open shell scripts and config files in nvim
         #    Added: .conf, .config, .cfg, .ini, .yml, .yaml, .toml, .lua, .json
-        *.sh|*.conf|*.config|*.cfg|*.ini|*.yml|*.yaml|*.toml|*.lua|*.json|*rc) 
+        *.sh|*.conf|*.config|*.cfg|*.ini|*.yml|*.yaml|*.toml|*.lua|*.json|*rc|*.py|*.nix|*.kdl|*.lock) 
             nvim "$fx" 
             ;;
         *) 

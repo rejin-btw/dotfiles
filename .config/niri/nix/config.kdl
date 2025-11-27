@@ -10,9 +10,9 @@
 
 
 
-workspace "browser"
-workspace "chat"
-
+//workspace "1"
+//workspace "2"
+//workspace "3"
 cursor {
     xcursor-theme "phinger-cursors-dark-left"
     xcursor-size 24
@@ -366,6 +366,18 @@ window-rule {
     open-floating true
 }
 
+
+
+/-window-rule {
+    match app-id="Alacritty"
+    open-on-workspace "1"
+}
+
+/-window-rule {
+    match app-id="com.ulaa.Ulaa"
+    open-on-workspace "3"
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -373,7 +385,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
-i
+
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
@@ -730,7 +742,7 @@ binds {
 //spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/niri11.jpg" "-m" "fill"
 spawn-at-startup "niri-mouse-scroll"
 //spawn-at-startup "sunsetr"
-spawn-at-startup "auto-consume"
+//spawn-at-startup "auto-consume"
 spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
 //spawn-sh-at-startup "watch-firefox-bookmarks"
 //spawn-at-startup "sh" "-c" "~/scripts/vcp_full_control.sh 5"
