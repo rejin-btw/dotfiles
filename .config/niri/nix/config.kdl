@@ -283,7 +283,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 //spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/fighterrejin.png" "-m" "fill"
+//spawn-at-startup "swaybg" "-i" "/home/rejin/Downloads/fighterrejin.png" "-m" "fill"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "~/dotfiles/scripts/update-wall.sh"
 //spawn-at-startup "xwayland-satellite"
 
 //spawn-at-startup "eww" "open" "niri_scroller"

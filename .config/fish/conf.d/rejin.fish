@@ -60,6 +60,22 @@ function gcp
 end
 
 
+# The "Desktop Pad" Command
+function note
+    # 1. Create file if missing
+    if not test -f ~/dotfiles/todo.txt
+        echo "TODO LIST:" > ~/dotfiles/todo.txt
+        echo "- [ ] " >> ~/dotfiles/todo.txt
+    end
+
+    # 2. Open in Neovim
+    nvim ~/dotfiles/todo.txt
+
+    # 3. On exit, update the wallpaper
+    ~/dotfiles/scripts/update-wall.sh
+end
+
+
 
 
 
