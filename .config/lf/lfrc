@@ -1,3 +1,12 @@
+
+# Use Pistol for everything
+set previewer pistol
+
+# Use a simple one-line cleaner (Required for Sixel)
+# This clears the graphic when you move the cursor
+set cleaner echo -ne "\033_Ga=d\033\\"
+
+
 # interpreter for shell commands
 set shell sh
 
@@ -71,8 +80,7 @@ cmd fzf_select ${{
 
 map f fzf_select
 
-# Set default editor
-set editor nvim
+
 
 # --- UPDATED OPEN COMMAND ---
 cmd open ${{
@@ -81,6 +89,17 @@ cmd open ${{
         #    Added: .conf, .config, .cfg, .ini, .yml, .yaml, .toml, .lua, .json
         *.sh|*.conf|*.config|*.cfg|*.ini|*.yml|*.yaml|*.toml|*.lua|*.json|*rc|*.py|*.nix|*.kdl|*.lock|*.fish|*.lua) 
             nvim "$fx" 
+            ;;
+
+
+            # Images -> IMV
+        image/*)
+            imv "$fx"
+            ;;
+            
+        # Video/Audio -> MPV
+        video/*|audio/*)
+            mpv --no-terminal "$fx"
             ;;
         *) 
             # 2. Fallback: Check MIME type for other text files (e.g. Makefiles, unknown source code)
@@ -92,6 +111,9 @@ cmd open ${{
                     # 3. Everything else (Images, PDFs) goes to system default
                     setsid -f xdg-open "$fx" >/dev/null 2>&1 
                     ;;
+
+
+                
             esac
             ;;
     esac
