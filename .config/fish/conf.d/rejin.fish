@@ -8,6 +8,7 @@ alias starshipc="nvim ~/dotfiles/.config/starship.toml"
 alias hmr="home-manager switch --flake ~/nixos-flake/.#rejin"
 alias smr="sudo nixos-rebuild switch --flake ~/nixos-flake/.#rejin-nixos"
 alias nfu="nix flake update --flake ~/nixos-flake"
+alias niric="nvim ~/dotfiles/.config/niri/nix/config.kdl"
 
 # My Settings
 set -g fish_greeting ""

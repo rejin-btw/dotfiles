@@ -1,0 +1,25 @@
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    open-maximized true
+}
+
+// Ulaa Chat App to specific workspace
+window-rule {
+    match at-startup=true app-id="ulaa-kpmdbogdmbfckbgdfdffkleoleokbhod-Default"
+    open-on-workspace "chat"
+}
+
+// Example: Rounded corners (Commented out)
+/-window-rule {
+    geometry-corner-radius 5
+    clip-to-geometry true
+}

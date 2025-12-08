@@ -1,0 +1,25 @@
+cursor {
+    xcursor-theme "phinger-cursors-dark-left"
+    xcursor-size 24
+}
+
+input {
+    keyboard {
+        xkb {
+            options "altwin:swap_alt_win"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed 0.4
+        left-handed
+    }
+
+    focus-follows-mouse max-scroll-amount="0%"
+}

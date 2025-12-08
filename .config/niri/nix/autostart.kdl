@@ -1,0 +1,20 @@
+// Core Services
+spawn-at-startup "mako"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "swayidle" "-w" \
+                 "before-sleep" "swaylock -f -c 000000"
+
+// User Scripts
+spawn-at-startup "~/dotfiles/scripts/update-wall.sh"
+spawn-at-startup "niri-mouse-scroll"
+
+// Delayed Startups (Shell scripts)
+spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
+
+
+
+// Disabled / Examples (Commented)
+// spawn-at-startup "waybar"
+// spawn-at-startup "xwayland-satellite"
+// spawn-sh-at-startup "watch-firefox-bookmarks"
