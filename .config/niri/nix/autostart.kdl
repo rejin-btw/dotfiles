@@ -6,7 +6,7 @@ spawn-at-startup "swayidle" "-w" \
                  "before-sleep" "swaylock -f -c 000000"
 
 // User Scripts
-spawn-at-startup "~/dotfiles/scripts/update-wall.sh"
+spawn-at-startup "update-wall"
 spawn-at-startup "niri-mouse-scroll"
 
 // Delayed Startups (Shell scripts)

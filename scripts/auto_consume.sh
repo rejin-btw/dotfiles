@@ -1,24 +1,39 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 PIDFILE="/tmp/niri-auto-consume.pid"
-# Point to the compiled binary we just built
-BINARY="$HOME/dotfiles/scripts/niri_auto/target/release/niri_auto"
 
+# Check if already running and kill by command pattern
 if [ -f "$PIDFILE" ]; then
-    pkill -f "$BINARY"
+    # Kill any running niri msg event-stream processes
+    pkill -f "niri msg --json event-stream"
     rm "$PIDFILE"
-    notify-send "Auto-Consume" "Disabled"
+    notify-send "Niri Auto-Consume" "Disabled - windows will open normally"
     exit 0
 fi
 
+# Start auto-consume mode
 echo $$ > "$PIDFILE"
-notify-send "Auto-Consume" "Enabled (Rust)"
+notify-send "Niri Auto-Consume" "Enabled - new windows will join current tab group"
 
-# Make sure it's executable (just in case)
-chmod +x "$BINARY"
+# Listen to event stream and auto-consume new windows
+niri msg --json event-stream | while read -r line; do
+    # Check if a window was opened
+    if echo "$line" | jq -e '.WindowOpenedOrChanged' > /dev/null 2>&1; then
+        # Small delay to ensure window is ready
+        sleep 0.1
+        
+        # Focus the column to the left (your tabbed column)
+        niri msg action focus-column-left
+        
+        # Consume the window from the right into the focused column
+        niri msg action consume-window-into-column
+        
+        # Ensure column is in tabbed display mode
+        niri msg action set-column-display tabbed
+    fi
+done &
 
-# Run the binary in the background
-"$BINARY" &
-
-trap "pkill -f '$BINARY'; rm -f '$PIDFILE'" EXIT
+# Cleanup on exit
+trap "pkill -f 'niri msg --json event-stream'; rm -f '$PIDFILE'" EXIT
 wait
+
