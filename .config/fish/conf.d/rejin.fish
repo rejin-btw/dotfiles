@@ -73,7 +73,7 @@ function note
     nvim ~/dotfiles/todo.txt
 
     # 3. On exit, update the wallpaper
-    ~/dotfiles/scripts/update-wall.sh
+    update-wall
 end
 
 

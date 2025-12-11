@@ -5,9 +5,9 @@ binds {
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
-    Mod+Shift+c { spawn "com.ulaa.Ulaa" "--incognito"; }
-    Mod+p { spawn "com.ulaa.Ulaa" "--app=https://www.perplexity.ai"; }
-    Mod+Z { spawn "com.ulaa.Ulaa" "--app=https://www.notion.so"; }
+    Mod+Shift+c { spawn "chromium" "--incognito"; }
+    Mod+p { spawn "chromium" "--app=https://www.perplexity.ai"; }
+    Mod+Z { spawn "chromium" "--app=https://www.notion.so"; }
 
     // System
     Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }
