@@ -12,6 +12,12 @@ window-rule {
     open-maximized true
 }
 
+window-rule {
+    match app-id="chrome-caidcmannjgahlnbpmidmiecjcoiiigg-Default" 
+
+    open-fullscreen true
+}
+
 // Ulaa Chat App to specific workspace
 window-rule {
     match at-startup=true app-id="ulaa-kpmdbogdmbfckbgdfdffkleoleokbhod-Default"

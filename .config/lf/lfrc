@@ -74,12 +74,12 @@ cmd zip ${{
 }}
 
 cmd fzf_select ${{
-    res="$(fd . | fzf)"
+    # Added -H to show hidden files like .config
+    res="$(fd -H . | fzf)"
     [ -n "$res" ] && lf -remote "send select '$res'"
 }}
 
 map f fzf_select
-
 
 
 # --- UPDATED OPEN COMMAND ---
