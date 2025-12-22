@@ -2,13 +2,18 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Apps
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
     Mod+Shift+c { spawn "chromium" "--incognito"; }
-    Mod+p { spawn "chromium" "--app=https://www.perplexity.ai"; }
+    //Mod+p { spawn "chromium" "--app=https://www.perplexity.ai"; }
     Mod+Z { spawn "chromium" "--app=https://www.notion.so"; }
     Mod+N { spawn "~/dotfiles/scripts/ie-tg.sh"; }
+    Mod+P { spawn "~/dotfiles/scripts/focus-p.sh"; }
+    Ctrl+Mod+P { spawn "chromium" "--app=https://www.perplexity.ai"; }
+    ctrl+Mod+Y { spawn "sh" "-c" "sleep 0.1 && chromium --app=https://gemini.google.com"; }
+    Mod+Y { spawn "~/dotfiles/scripts/focus-g.sh"; }
+
 
     // System
     Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }

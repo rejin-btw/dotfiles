@@ -29,3 +29,38 @@ window-rule {
     geometry-corner-radius 5
     clip-to-geometry true
 }
+
+
+window-rule {
+    // Match the specific title we set in the script
+    match title="URGENT_ALARM"
+
+    // 1. Force it to cover the screen
+    open-fullscreen true
+    
+    // 2. Make it red/urgent (optional)
+    border {
+        active-color "#ff0000"
+    }
+}
+
+window-rule {
+    // Match the web app by title
+    match app-id="chrome-www.perplexity.ai__-Default"
+    
+    // 1. Force it to open on Workspace 2 (or any number/name you like)
+    open-on-workspace "chat"
+    
+    // 2. (Optional) Make it slightly wider since it's a reading app
+    default-column-width { proportion 0.6; }
+}
+
+window-rule {
+    match app-id="chrome-gemini.google.com__-Default"
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id="chromium-browser"
+    open-on-workspace "chat"
+}

@@ -4,6 +4,7 @@ spawn-at-startup "swww-daemon"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "swayidle" "-w" \
                  "before-sleep" "swaylock -f -c 000000"
+spawn-at-startup "niriusd"
 
 // User Scripts
 spawn-at-startup "update-wall"
@@ -11,6 +12,11 @@ spawn-at-startup "niri-mouse-scroll"
 
 // Delayed Startups (Shell scripts)
 spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
+
+// my alarms
+spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "7:00am" "Wake Up" "repeat"
+spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "1:30pm" "Lunch" "repeat"
+spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "10:00pm" "Sleep" "repeat"
 
 
 

@@ -77,6 +77,9 @@ function note
 end
 
 
+fish_add_path ~/scripts
+
+
 
 
 
