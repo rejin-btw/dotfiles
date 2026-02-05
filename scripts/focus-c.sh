@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ~/.config/niri/focus-perplexity.sh
 
-APP_ID="chrome-www.perplexity.ai__-Default"  # Replace with your actual app-id
-LAUNCH_CMD="chromium --app=https://www.perplexity.ai"
+APP_ID="chromium-browser"  # Replace with your actual app-id
+LAUNCH_CMD="chromium"
 
 # Get all matching windows
 WINDOWS=$(niri msg -j windows | jq --arg app "$APP_ID" '[.[] | select(.app_id == $app) | {id, is_focused}]')
@@ -32,4 +32,5 @@ else
     
     niri msg action focus-window --id "$ID"
 fi
+
 

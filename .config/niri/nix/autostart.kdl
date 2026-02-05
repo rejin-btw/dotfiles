@@ -14,9 +14,9 @@ spawn-at-startup "niri-mouse-scroll"
 spawn-sh-at-startup "sleep 2 && 'vcp-control' '5'"
 
 // my alarms
-spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "7:00am" "Wake Up" "repeat"
-spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "1:30pm" "Lunch" "repeat"
-spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "10:00pm" "Sleep" "repeat"
+//spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "7:00am" "Wake Up" "repeat"
+//spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "1:30pm" "Lunch" "repeat"
+//spawn-at-startup "/home/rejin/scripts/my-alarm.sh" "10:00pm" "Sleep" "repeat"
 
 
 

@@ -44,7 +44,7 @@ window-rule {
     }
 }
 
-window-rule {
+/-window-rule {
     // Match the web app by title
     match app-id="chrome-www.perplexity.ai__-Default"
     
@@ -55,12 +55,12 @@ window-rule {
     default-column-width { proportion 0.6; }
 }
 
-window-rule {
+/-window-rule {
     match app-id="chrome-gemini.google.com__-Default"
     open-on-workspace "chat"
 }
 
-window-rule {
+/-window-rule {
     match app-id="chromium-browser"
     open-on-workspace "chat"
 }

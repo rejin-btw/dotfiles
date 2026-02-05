@@ -13,7 +13,10 @@ binds {
     Ctrl+Mod+P { spawn "chromium" "--app=https://www.perplexity.ai"; }
     ctrl+Mod+Y { spawn "sh" "-c" "sleep 0.1 && chromium --app=https://gemini.google.com"; }
     Mod+Y { spawn "~/dotfiles/scripts/focus-g.sh"; }
-
+    Mod+G { spawn "~/dotfiles/scripts/focus-o.sh"; }
+    Mod+Shift+Y { spawn "~/dotfiles/scripts/focus-f.sh"; }
+    Alt+C { spawn "~/dotfiles/scripts/focus-c.sh"; }
+    Alt+shift+C { spawn "chromium"; }
 
     // System
     Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }
