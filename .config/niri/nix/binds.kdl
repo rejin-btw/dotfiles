@@ -10,6 +10,7 @@ binds {
     Mod+Z { spawn "chromium" "--app=https://www.notion.so"; }
     Mod+N { spawn "~/dotfiles/scripts/ie-tg.sh"; }
     Mod+P { spawn "~/dotfiles/scripts/focus-p.sh"; }
+    Alt+W { spawn "~/dotfiles/scripts/focus-w.sh"; }
     Ctrl+Mod+P { spawn "chromium" "--app=https://www.perplexity.ai"; }
     ctrl+Mod+Y { spawn "sh" "-c" "sleep 0.1 && chromium --app=https://gemini.google.com"; }
     Mod+Y { spawn "~/dotfiles/scripts/focus-g.sh"; }
