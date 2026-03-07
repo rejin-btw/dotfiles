@@ -5,6 +5,8 @@ spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPL
 spawn-at-startup "swayidle" "-w" \
                  "before-sleep" "swaylock -f -c 000000"
 spawn-at-startup "niriusd"
+spawn-at-startup "rfkill" "block" "0"
+
 
 // User Scripts
 spawn-at-startup "update-wall"

@@ -2,11 +2,14 @@
 
 # My Aliases
 alias hm="nvim ~/nixos-flake/home/rejin.nix"
-alias sm="nvim ~/nixos-flake/hosts/default.nix"
+alias sm="nvim ~/nixos-flake/hosts/desktop/default.nix"
+
+alias smt="nvim ~/nixos-flake/hosts/thinkpad/default.nix"
 alias fishc="nvim ~/dotfiles/.config/fish/conf.d/rejin.fish"
 alias starshipc="nvim ~/dotfiles/.config/starship.toml"
 alias hmr="home-manager switch --flake ~/nixos-flake/.#rejin"
 alias smr="sudo nixos-rebuild switch --flake ~/nixos-flake/.#rejin-nixos"
+alias smtr="sudo nixos-rebuild switch --flake ~/nixos-flake/.#thinkpad"
 alias nfu="nix flake update --flake ~/nixos-flake"
 alias niric="nvim ~/dotfiles/.config/niri/nix/config.kdl"
 #alias windows="~/Quickemu/tiny10/windows.sh"

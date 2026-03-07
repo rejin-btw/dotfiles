@@ -20,4 +20,8 @@ environment {
 workspace "code"
 workspace "chat"
 
+switch-events {
+    lid-close { spawn "systemctl" "suspend"; }
+}
+
 
