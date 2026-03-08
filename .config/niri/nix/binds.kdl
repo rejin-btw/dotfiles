@@ -28,6 +28,9 @@ binds {
     Mod+Shift+P { power-off-monitors; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Alt+B { spawn "sh" "-c" "notify-send 'Battery Status' \"$(cat /sys/class/power_supply/BAT0/capacity)% - $(cat /sys/class/power_supply/BAT0/status)\""; }
+    Mod+Shift+Comma { spawn "rfkill" "block" "0"; }
+    Mod+Shift+Period { spawn "rfkill" "unblock" "0"; }
+    Mod+Shift+B { spawn "foot" "btop"; }
 
     // Audio & Hardware
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
