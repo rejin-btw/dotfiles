@@ -16,6 +16,7 @@ alias niric="nvim ~/dotfiles/.config/niri/nix/config.kdl"
 alias windows="cd ~/Quickemu/tiny10; and quickemu --vm tiny10.conf --display spice"
 alias wstop="waydroid session stop; sudo systemctl stop waydroid-container"
 alias samed="sudo mount --bind /home/rejin/Downloads /home/rejin/.local/share/waydroid/data/media/0/Download"
+alias fullcharge="sudo tlp fullcharge BAT0"
 
 
 
