@@ -8,6 +8,8 @@ window-rule {
     open-floating true
 }
 
+
+
 window-rule {
     open-maximized true
 }
@@ -22,6 +24,7 @@ window-rule {
 window-rule {
   match app-id="mpv"
   open-fullscreen true
+  open-on-workspace "chat"
 }
 
 

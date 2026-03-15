@@ -8,7 +8,8 @@ binds {
     Mod+Shift+c { spawn "chromium" "--incognito"; }
     //Mod+p { spawn "chromium" "--app=https://www.perplexity.ai"; }
     Mod+Z { spawn "chromium" "--app=https://www.notion.so"; }
-    Mod+N { spawn "~/dotfiles/scripts/ie-tg.sh"; }
+    Mod+N { spawn "~/dotfiles/scripts/focus-t.sh"; }
+    //Mod+N { spawn "paper-plane"; }
     Mod+P { spawn "~/dotfiles/scripts/focus-p.sh"; }
     Alt+W { spawn "~/dotfiles/scripts/focus-w.sh"; }
     Ctrl+Mod+P { spawn "chromium" "--app=https://www.perplexity.ai"; }
@@ -31,6 +32,17 @@ binds {
     Mod+Shift+Comma { spawn "rfkill" "block" "0"; }
     Mod+Shift+Period { spawn "rfkill" "unblock" "0"; }
     Mod+Shift+B { spawn "foot" "btop"; }
+    /-Ctrl+Shift+A { 
+        // 1. Check if Anki is running. 
+        // 2. If not, start it "disowned" so it doesn't close when the shortcut finishes.
+        // 3. Use Niri's focus command (Case-Sensitive "Anki") and then wtype.
+        spawn "sh" "-c" "pgrep -x anki > /dev/null || nohup anki >/dev/null 2>&1 & sleep 3; niri msg action focus-window --app-id 'Anki'; sleep 0.5; wtype a"
+    }
+
+    Ctrl+Shift+A { 
+        spawn "bash" "-c" "~/dotfiles/scripts/ankiadd.sh"; 
+    }
+
 
     // Audio & Hardware
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }

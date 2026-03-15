@@ -19,5 +19,10 @@ environment {
 
 workspace "code"
 workspace "chat"
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 
